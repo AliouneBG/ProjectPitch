@@ -1,10 +1,10 @@
 export interface PitchRequest {
-  projectName: string;
-  projectSummary: string;
+  projectName?: string;
+  projectSummary?: string;
   projectDescription: string;
-  techStack: string;
-  keyFeatures: string;
-  technicalChallenge: string;
+  techStack?: string;
+  keyFeatures?: string;
+  technicalChallenge?: string;
   targetRole?: string;
   targetCompanyType?: string;
 }

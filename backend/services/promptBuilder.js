@@ -52,12 +52,12 @@ CRITICAL RULES (FOLLOW STRICTLY):
 11. You can return 1 to 3 weaknesses in the \`weakSpots\` array conditionally, provided multiple distinct gaps are clearly present and justified.${sparseWarning}
 
 User's Raw Project Data:
-- Name: ${data.projectName}
-- Summary: ${data.projectSummary}
+- Name: ${data.projectName || 'Not provided'}
+- Summary: ${data.projectSummary || 'Not provided'}
 - Details: ${data.projectDescription}
-- Stack: ${data.techStack}
-- Features: ${data.keyFeatures}
-- Technical Challenge: ${data.technicalChallenge}
+- Stack: ${data.techStack || 'Not provided'}
+- Features: ${data.keyFeatures || 'Not provided'}
+- Technical Challenge: ${data.technicalChallenge || 'Not provided'}
 
 ROLE & COMPANY CONTEXT:
 ${roleContext}

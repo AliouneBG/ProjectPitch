@@ -37,7 +37,7 @@ function App() {
     <div className="container">
       <div className="header">
         <h1>ProjectPitch</h1>
-        <p>Turn your messy project description into a clear, interview-ready explanation.</p>
+        <p>Turn your project into a confident interview answer — and handle follow-ups with ease.</p>
       </div>
 
       {error && (

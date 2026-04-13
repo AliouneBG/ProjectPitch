@@ -7,14 +7,14 @@ const { generateCacheKey, getCache, setCache } = require('../utils/cacheUtils');
 const router = express.Router();
 
 const pitchFormSchema = z.object({
-  projectName: z.string().min(1, 'Project name is required'),
-  projectSummary: z.string().min(1, 'Project summary is required'),
-  projectDescription: z.string().min(10, 'Full project description is required (min 10 chars)'),
-  techStack: z.string().min(1, 'Tech stack is required'),
-  keyFeatures: z.string().min(1, 'Key features are required'),
-  technicalChallenge: z.string().min(1, 'Technical challenge is required'),
-  targetRole: z.string().optional(),
-  targetCompanyType: z.string().optional(),
+  projectName: z.string().optional().default(''),
+  projectSummary: z.string().optional().default(''),
+  projectDescription: z.string().min(30, 'Please describe your project in at least a few sentences'),
+  techStack: z.string().optional().default(''),
+  keyFeatures: z.string().optional().default(''),
+  technicalChallenge: z.string().optional().default(''),
+  targetRole: z.string().optional().default(''),
+  targetCompanyType: z.string().optional().default(''),
 });
 
 router.post('/', async (req, res) => {
