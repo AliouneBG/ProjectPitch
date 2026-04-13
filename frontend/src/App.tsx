@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { PitchForm } from './components/PitchForm';
 import { PitchResult } from './components/PitchResult';
+import { LoadingSteps } from './components/LoadingSteps';
 import { generatePitchApi } from './api/generate';
 import type { PitchRequest, PitchResponse } from './api/generate';
 import { AlertCircle } from 'lucide-react';
@@ -34,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ position: 'relative' }}>
       <div className="header">
         <h1>ProjectPitch</h1>
         <p>Turn your project into a confident interview answer — and handle follow-ups with ease.</p>
@@ -49,7 +50,7 @@ function App() {
         </div>
       )}
 
-      {result && !isLoading && !error ? (
+      {result && !isLoading && (
         <>
           <PitchResult result={result} context={lastRequest!} onRegenerate={handleRegenerate} isLoading={isLoading} />
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
@@ -58,15 +59,27 @@ function App() {
             </button>
           </div>
         </>
-      ) : (
-        <div style={{ display: result ? 'none' : 'block' }}>
-          <PitchForm onSubmit={handleGenerate} isLoading={isLoading} />
-        </div>
       )}
-      
-      {/* If loading and we have a result, show it underneath with a loading overlay/state */}
-      {result && isLoading && !error && (
-        <div style={{ opacity: 0.5, pointerEvents: 'none' }}>
+
+      {!result && !isLoading && (
+        <PitchForm onSubmit={handleGenerate} isLoading={isLoading} />
+      )}
+
+      {isLoading && (
+         <div style={{ 
+             position: result ? 'absolute' : 'static',
+             top: result ? '250px' : 'auto',
+             left: result ? '0' : 'auto',
+             right: result ? '0' : 'auto',
+             zIndex: 10
+         }}>
+            <LoadingSteps />
+         </div>
+      )}
+
+      {/* If loading and we have a result, show it underneath faded */}
+      {result && isLoading && (
+        <div style={{ opacity: 0.3, pointerEvents: 'none', filter: 'blur(2px)' }}>
            <PitchResult result={result} context={lastRequest!} onRegenerate={handleRegenerate} isLoading={isLoading} />
         </div>
       )}
