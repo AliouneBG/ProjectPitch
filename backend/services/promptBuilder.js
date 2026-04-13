@@ -49,7 +49,9 @@ CRITICAL RULES (FOLLOW STRICTLY):
 8. Ensure the response is concise, high-signal, and something the user could confidently say out loud without sounding scripted or overly formal.
 9. Prioritize impact and clarity over completeness. Avoid repeating information across sections.
 10. Weak spots and risk signals must focus purely on technical interview defensibility. Identify where the technical explanation is vague, underexplained, or hard to defend. Do NOT critique the product's real-world business viability, legal compliance, or domain correctness. Do NOT add domain severity expectations (e.g., "which is crucial for financial data", "critical data privacy considerations"). Keep focus purely on what an interviewer might ask next.
-11. You can return 1 to 3 weaknesses in the \`weakSpots\` array conditionally, provided multiple distinct gaps are clearly present and justified.${sparseWarning}
+11. You can return 1 to 3 weaknesses in the \`weakSpots\` array conditionally, provided multiple distinct gaps are clearly present and justified.
+12. WEAK SPOT TONE: Frame weak spots as coaching, NOT criticism. Use phrasing like "You could strengthen your answer by including..." or "Consider mentioning..." rather than "The explanation omits..." or "There is no mention of...". The goal is to help the candidate improve, not to tell them what they did wrong.
+13. SPECIFICITY POLISH: Avoid vague abstractions like "custom logic", "processing pipeline", or "handles data." When the input supports it, go one layer deeper (e.g., "rule-based categorization" instead of "custom logic", "as transactions are fetched" instead of "real-time"). If the input does not support more specificity, leave it general rather than inventing depth.${sparseWarning}
 
 User's Raw Project Data:
 - Name: ${data.projectName || 'Not provided'}
@@ -67,7 +69,7 @@ Return EXACTLY one valid JSON object with this schema:
 {
   "simpleExplanation": "Plain English explanation of what the project does, who it helps, and a concrete outcome. Max 2 sentences.",
   "technicalExplanation": "Concrete technical explanation of how the system works. Max 3 sentences.",
-  "interviewAnswer": "A natural 45-60 second spoken answer to 'Tell me about this project.' MUST have a sharp personal hook (e.g., 'One project I am proud of is X, which I built to solve Y...') and focus on impact instead of a flat summary of features.",
+  "interviewAnswer": "A natural 45-60 second spoken answer to 'Tell me about this project.' MUST have a sharp personal hook (e.g., 'One project I am proud of is X, which I built to solve Y...') and focus on impact instead of a flat summary of features. MUST include at least one sentence with concrete engineering signal — specifically: how data flows through the system, where key logic lives, or a specific technical decision/constraint. Do NOT use vague filler like 'uses a backend to process data efficiently.' The technical sentence must reference something specific from the user's input (e.g., a named API, a processing pattern, a storage decision). Integrate the technical detail naturally into the narrative without breaking conversational flow — it should feel like part of the story, not an awkward insertion.",
   "engineeringDecisions": [
     "1 to 3 concrete tradeoffs grounded in the input (return fewer if the input does not support more)"
   ],
@@ -78,7 +80,7 @@ Return EXACTLY one valid JSON object with this schema:
     {
       "area": "E.g., Scalability, Error Handling, Testing, Architecture",
       "issueType": "missing OR weak",
-      "message": "One concise sentence explaining where this technical explanation is vague, underexplained, or hard to defend in an interview context."
+      "message": "One concise coaching-toned sentence framed as a suggestion (e.g., 'You could strengthen your answer by explaining...' or 'Consider mentioning...') rather than a criticism (never 'The explanation omits...' or 'There is no mention of...')"
     }
   ],
   "riskSignals": [

@@ -33,6 +33,9 @@ export function PitchResult({ result, context, onRegenerate, isLoading }: Props)
       )}
 
       {/* HERO — Interview Answer */}
+      {/* WOW MOMENT FRAMING */}
+      <p className="hero-framing">Here's a confident interview answer you can use:</p>
+
       <HeroAnswerCard
         content={result.interviewAnswer}
         context={context}
@@ -98,10 +101,9 @@ export function PitchResult({ result, context, onRegenerate, isLoading }: Props)
       {result.weakSpots && result.weakSpots.length > 0 && (
         <CollapsibleSection
           title="Where This Might Break in an Interview"
-          description=""
+          description={`${result.weakSpots.length} potential weak spot${result.weakSpots.length > 1 ? 's' : ''} interviewers may ask about`}
           defaultOpen={false}
           icon={<AlertTriangle size={20} style={{ color: 'var(--error-color)' }} />}
-          badge={result.weakSpots.length}
           accentColor="var(--error-color)"
         >
           {result.weakSpots.map((spot, i) => (

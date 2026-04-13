@@ -140,12 +140,12 @@ export function PitchForm({ onSubmit, isLoading }: Props) {
         {isLoading ? (
           <><Loader2 className="spinner" size={20} /> Generating...</>
         ) : (
-          'Generate My Answer'
+          'Generate My Interview Answer'
         )}
       </button>
 
       <div style={{ textAlign: 'center', marginTop: '0.8rem' }}>
-        <span className="social-proof">Helps you sound clear, confident, and defensible</span>
+        <span className="social-proof">Built for developers preparing for technical interviews</span>
       </div>
     </form>
   );

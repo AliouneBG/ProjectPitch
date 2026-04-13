@@ -331,3 +331,13 @@ input.has-error, textarea.has-error { border-color: var(--error-color); }
   font-style: italic;
   opacity: 0.8;
 }
+
+/* ─── HERO FRAMING ─────────────────────────────────────── */
+
+.hero-framing {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.6rem 0;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
